@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'stcs-live',
+  appId: 'com.stcs.app',
+  appName: 'STCS',
   webDir: 'www',
   bundledWebRuntime: false
 };
