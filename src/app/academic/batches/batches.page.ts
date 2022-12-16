@@ -6,7 +6,6 @@ import { format, parseISO } from 'date-fns';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
-import { UserProfileModel } from 'src/app/models/userProfile.model';
 import { UserConstant } from 'src/app/appConstants/userConstants';
 
 @Component({

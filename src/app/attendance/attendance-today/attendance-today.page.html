@@ -17,7 +17,7 @@
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Update Attendance</ion-title>
+    <ion-title>Attendance</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,7 +25,9 @@
   <ng-template>
     <ion-content>
       <ion-list>
-        <ion-item [button]="true" [detail]="false" [routerLink]="['/attendance-view',batchKey,classId]">View Attendance</ion-item>
+        <ion-item [button]="true" [detail]="false" [routerLink]="['/attendance-view',batchKey,classId]">
+          View Attendance</ion-item>
+        <ion-item [button]="true" [detail]="false" (click)="monthlyReport()">View Monthly Report</ion-item>
         <ion-item [button]="true" [detail]="false" (click)="showInfoAlert()">Update Old Attendance</ion-item>
       </ion-list>
     </ion-content>
@@ -37,7 +39,7 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>Today's Attendance of Class "{{className}}"</ion-card-title>
-      <ion-card-subtitle>Total classes taken : {{totalClassesTaken}}</ion-card-subtitle>
+      <ion-card-subtitle>Total classes taken till now: {{totalClassesTaken}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -56,7 +58,8 @@
         </ion-grid>
         <ion-item *ngFor="let item of attendanceList">
           <ion-avatar slot="start">
-            <img alt="png" src="{{item.profilePic}}" onError="src='https://ionicframework.com/docs/img/demos/avatar.svg'" />
+            <img alt="png" src="{{item.profilePic}}"
+              onError="src='https://ionicframework.com/docs/img/demos/avatar.svg'" />
           </ion-avatar>
           <ion-label>{{item.name}}
           </ion-label>

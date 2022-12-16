@@ -75,6 +75,14 @@ const routes: Routes = [
     path: 'my-profile',
     loadChildren: () => import('./account/my-profile/my-profile.module').then( m => m.MyProfilePageModule)
   },
+  {
+    path: 'attendance-monthly/:batchKey/:id/:monthYear',
+    loadChildren: () => import('./attendance/attendance-monthly/attendance-monthly.module').then( m => m.AttendanceMonthlyPageModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./account/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
+  },
 ];
 
 @NgModule({

@@ -4,7 +4,15 @@ const config: CapacitorConfig = {
   appId: 'com.stcs.app',
   appName: 'STCS',
   webDir: 'www',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
+  plugins:{
+    "SplashScreen":{
+      "launchShowDuration":0
+    },
+    "PushNotifications":{
+      "presentationOptions":["badge","sound","alert"]
+    }
+  }
 };
 
 export default config;

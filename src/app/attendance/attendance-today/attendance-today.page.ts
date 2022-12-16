@@ -21,10 +21,11 @@ export class AttendanceTodayPage implements OnInit {
   public totalClassesTaken: number = 0
   className: any
   today: any
+  maxDate: any
   attendanceData: any
   attendanceList: AttendanceModel[] = []
   sourceAttendanceList: AttendanceModel[] = []
-  constructor(private toastController: ToastController,private activatedRouter: ActivatedRoute, private attendanceLoadingControl: LoadingController, private router: Router, private attendanceAlertController: AlertController) { }
+  constructor(private toastController: ToastController, private activatedRouter: ActivatedRoute, private attendanceLoadingControl: LoadingController, private router: Router, private attendanceAlertController: AlertController) { }
 
   ngOnInit() {
     this.checkUserLoggedIn()
@@ -39,6 +40,7 @@ export class AttendanceTodayPage implements OnInit {
           this.classId = params.get('id')
           var now = new Date()
           this.today = format(parseISO(now.toISOString()), 'dd-MM-yyyy')
+          this.maxDate = format(parseISO(now.toISOString()), 'yyyy-MM-dd')
           this.getClassInfo()
           this.getAttendanceList()
         })
@@ -83,7 +85,7 @@ export class AttendanceTodayPage implements OnInit {
               tempObj.profilePic = studentObj.profilePic
               tempObj.morning = childsnapshot[key]['morning']
               tempObj.afternoon = childsnapshot[key]['afternoon']
-              if(this.sourceAttendanceList.length<totalStudents)
+              if (this.sourceAttendanceList.length < totalStudents)
                 this.sourceAttendanceList.push(tempObj)
               if (this.sourceAttendanceList.length == totalStudents) {
                 this.attendanceList = this.sourceAttendanceList
@@ -195,6 +197,9 @@ export class AttendanceTodayPage implements OnInit {
       inputs: [
         {
           type: 'date',
+          attributes: {
+            max: this.maxDate,
+          },
           placeholder: 'Select Date',
         },
       ],
@@ -208,6 +213,29 @@ export class AttendanceTodayPage implements OnInit {
           );
         },
       },],
+    });
+
+    await alert.present();
+  }
+
+  async monthlyReport() {
+    const alert = await this.attendanceAlertController.create({
+      header: 'Please select the month and year',
+      inputs: [
+        {
+          type: 'month',
+        },
+      ],
+      buttons: [{
+        text: 'OK',
+        role: 'confirm',
+        handler: (data) => {
+          var res = data[0].split("-");
+          this.router.navigateByUrl(
+            `/attendance-monthly/${this.batchKey}/${this.classId}/${res[1]}-${res[0]}`
+          );
+        },
+      },]
     });
 
     await alert.present();

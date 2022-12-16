@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "753727762963",
+    "firebase_url": "https://stcs-live-default-rtdb.firebaseio.com",
+    "project_id": "stcs-live",
+    "storage_bucket": "stcs-live.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753727762963:android:c7866a41b78856001f45e6",
+        "android_client_info": {
+          "package_name": "com.stcs.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "753727762963-1p5b6288jgfmiqd02ci2kfb95ncgf70b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADdB50762gd4qx2BlmqFl9m7Ptmh7kQnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "753727762963-1p5b6288jgfmiqd02ci2kfb95ncgf70b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
