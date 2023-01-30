@@ -26,6 +26,7 @@
     <ion-content>
       <ion-list>
         <ion-item [button]="true" [detail]="false" [routerLink]="['/attendance-view',batchKey,classId]">View Attendance</ion-item>
+        <ion-item [button]="true" [detail]="false" (click)="monthlyReport()">View Monthly Report</ion-item>
         <ion-item [button]="true" [detail]="false" (click)="showInfoAlert()">Update Old Attendance</ion-item>
       </ion-list>
     </ion-content>

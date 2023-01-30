@@ -7,6 +7,8 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
 import { UserConstant } from 'src/app/appConstants/userConstants';
+import { ClassService } from 'src/app/services/class/class.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-batches',
@@ -15,7 +17,7 @@ import { UserConstant } from 'src/app/appConstants/userConstants';
 })
 export class BatchesPage implements OnInit {
 
-  private loading:any
+  private loading: any
   sourceBatches: Batch[] = []
   batches: Batch[] = []
   public database = getDatabase();
@@ -27,20 +29,22 @@ export class BatchesPage implements OnInit {
   searchString: string = ""
   @ViewChild(IonModal) modal?: IonModal;
   public auth = getAuth();
-  public currentUser:any = UserConstant.currentUser
+  public currentUser: any = UserConstant.currentUser
 
-  constructor(private batchLoadingControl: LoadingController, private router:Router) { }
+  constructor(private dataService: ClassService, private batchLoadingControl: LoadingController, private router: Router) { }
 
   ngOnInit() {
     this.checkUserLoggedIn()
+
   }
 
   checkUserLoggedIn() {
     const user = this.auth.currentUser;
     if (user !== null) {
+      // this.getBatchList()
       this.getBatchList()
     }
-    else{
+    else {
       this.router.navigateByUrl('/splash')
     }
   }
@@ -166,5 +170,29 @@ export class BatchesPage implements OnInit {
       )
     }
   }
+
+  //get all batches
+  // async getAllBatches() {
+  //   await this.pleaseWaitLoader()
+  //   this.dataService.getBatches().then((data) => {
+
+  //     console.log(data);
+  //     console.log(typeof(data))
+  //     // var totalBatches = data.size
+  //     // console.log(totalBatches)
+  //     // data.forEach((childSnapshot: any) => {
+  //     //   var tempObj: Batch = childSnapshot.val()
+  //     //   tempObj.key = childSnapshot.key
+  //     //   this.sourceBatches.push(tempObj)
+  //     //   if (this.sourceBatches.length == totalBatches) {
+  //     //     this.sourceBatches.reverse()
+  //     //     this.batches = this.sourceBatches
+  //     //     this.dismissLoadingController();
+  //     //   }
+  //     // });
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   });
+  // }
 
 }

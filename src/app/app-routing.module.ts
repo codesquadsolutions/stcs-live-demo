@@ -83,6 +83,10 @@ const routes: Routes = [
     path: 'privacy-policy',
     loadChildren: () => import('./account/privacy-policy/privacy-policy.module').then( m => m.PrivacyPolicyPageModule)
   },
+  {
+    path: 'attendance-by-calendar',
+    loadChildren: () => import('./attendance/attendance-by-calendar/attendance-by-calendar.module').then( m => m.AttendanceByCalendarPageModule)
+  },
 ];
 
 @NgModule({
